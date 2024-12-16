@@ -2,6 +2,7 @@
 #define MANIFOLD2_MANIFOLD_H_
 
 #include "types.h"
+#include <tuple>
 
 #include "Octree.h"
 
@@ -9,8 +10,7 @@ class Manifold {
 public:
 	Manifold();
 	~Manifold();
-	void ProcessManifold(const MatrixD& V, const MatrixI& F, int depth,
-		MatrixD* out_V, MatrixI* out_F);
+	std::tuple<MatrixD, MatrixI>  ProcessManifold(const MatrixD& V, const MatrixI& F, int depth);
 
 protected:
 	void BuildTree(int resolution);

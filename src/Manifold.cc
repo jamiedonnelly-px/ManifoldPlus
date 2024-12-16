@@ -1,6 +1,4 @@
 #include <Eigen/Dense>
-#include <stdlib.h>
-#include <tuple>
 
 #include "Manifold.h"
 #include "MeshProjector.h"
@@ -25,15 +23,15 @@ std::tuple<MatrixD, MatrixI> Manifold::ProcessManifold(const MatrixD& V, const M
 	BuildTree(depth);
 	ConstructManifold();
 
-	*out_V = MatrixD(vertices_.size(), 3);
-	*out_F = MatrixI(face_indices_.size(), 3);
+	MatrixD out_V = MatrixD(vertices_.size(), 3);
+	MatrixI out_F = MatrixI(face_indices_.size(), 3);
 	for (int i = 0; i < vertices_.size(); ++i)
-		out_V->row(i) = vertices_[i];
+		out_V.row(i) = vertices_[i];
 	for (int i = 0; i < face_indices_.size(); ++i)
-		out_F->row(i) = face_indices_[i];
+		out_F.row(i) = face_indices_[i];
 
 	MeshProjector projector;
-	projector.Project(V_, F_, out_V, out_F);
+	projector.Project(V_, F_, &out_V, &out_F);
 	
 	// Return the tuple of matrices
     return std::make_tuple(out_V, out_F);

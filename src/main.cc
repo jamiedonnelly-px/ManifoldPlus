@@ -1,3 +1,5 @@
+#include <tuple>
+#include <iostream>
 #include <igl/readOBJ.h>
 #include <igl/writeOBJ.h>
 
@@ -14,8 +16,8 @@ int main(int argc, char**argv) {
 	parser.ParseArgument(argc, argv);
 	parser.Log();
 
-	MatrixD V, out_V;
-	MatrixI F, out_F;
+	MatrixD V;
+	MatrixI F;
 	ReadOBJ(parser["input"].c_str(), &V, &F);
 
 	printf("vertex number: %d    face number: %d\n", V.rows(), F.rows());
@@ -23,7 +25,10 @@ int main(int argc, char**argv) {
 	sscanf(parser["depth"].c_str(), "%d", &depth);
 
 	Manifold manifold;
-	manifold.ProcessManifold(V, F, depth, &out_V, &out_F);
+	
+	std::tuple<MatrixD, MatrixI> outputs = manifold.ProcessManifold(V, F, depth);
+	MatrixD out_V = std::get<0>(outputs);
+	MatrixI out_F = std::get<1>(outputs);
 
 	WriteOBJ(parser["output"].c_str(), out_V, out_F);
 

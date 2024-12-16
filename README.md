@@ -6,6 +6,7 @@ Advanced version of my previous Manifold algorithm from this [**repo**](https://
 ### Dependencies
 1. Eigen
 2. LibIGL
+3. pybind11
 
 ### Installing prerequisites
 ```

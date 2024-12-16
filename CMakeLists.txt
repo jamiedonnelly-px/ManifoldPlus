@@ -26,6 +26,7 @@ option(BUILD_LOG "Enable verbose log" OFF)
 include_directories(src)
 include_directories(3rd_party/eigen/)
 include_directories(3rd_party/libigl/include)
+include_directories(3rd_party/pybind11/)
 
 if(BUILD_PERFORMANCE_TEST)
     add_definitions(-DPERFORMANCE_TEST)

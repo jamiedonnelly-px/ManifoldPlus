@@ -1,7 +1,8 @@
-#include "Manifold.h"
-
 #include <Eigen/Dense>
+#include <stdlib.h>
+#include <tuple>
 
+#include "Manifold.h"
 #include "MeshProjector.h"
 
 Manifold::Manifold()
@@ -16,8 +17,7 @@ Manifold::~Manifold()
 	tree_ = 0;
 }
 
-void Manifold::ProcessManifold(const MatrixD& V, const MatrixI& F,
-	int depth, MatrixD* out_V, MatrixI* out_F)
+std::tuple<MatrixD, MatrixI> Manifold::ProcessManifold(const MatrixD& V, const MatrixI& F, int depth)
 {
 	V_ = V;
 	F_ = F;
@@ -34,6 +34,9 @@ void Manifold::ProcessManifold(const MatrixD& V, const MatrixI& F,
 
 	MeshProjector projector;
 	projector.Project(V_, F_, out_V, out_F);
+	
+	// Return the tuple of matrices
+    return std::make_tuple(out_V, out_F);
 }
 
 void Manifold::BuildTree(int depth)

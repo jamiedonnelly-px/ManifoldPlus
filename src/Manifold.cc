@@ -17,8 +17,8 @@ Manifold::~Manifold()
 
 std::tuple<MatrixD, MatrixI> Manifold::ProcessManifold(const MatrixD& verts, const MatrixI& faces, int depth)
 {
-	V_ = V;
-	F_ = F;
+	V_ = verts;
+	F_ = faces;
 
 	BuildTree(depth);
 	ConstructManifold();

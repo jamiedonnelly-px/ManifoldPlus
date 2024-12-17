@@ -33,11 +33,6 @@ set(
     src/types.h
 )
 
-# Define the module
-#pybind11_add_module(manifold src/main.cc src/Manifold.cc src/Intersection.cc src/IO.cc src/MeshProjector.cc src/Octree.cc src/Parser.cc)
-# Include directories
-#target_include_directories(manifold PRIVATE src)
-
 pybind11_add_module(manifold ${manifold_SRC})
 
 target_link_libraries(manifold PRIVATE pybind11::module)

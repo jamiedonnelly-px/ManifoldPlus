@@ -1,6 +1,7 @@
 [submodule "3rd_party/pybind11"]
 	path = 3rd_party/pybind11
-	url = https://github.com/pybind/pybind11.git
+	url = https://github.com/pybind/pybind11
+	branch = master
 [submodule "3rd_party/eigen"]
 	path = 3rd_party/eigen
 	url = https://gitlab.com/libeigen/eigen.git

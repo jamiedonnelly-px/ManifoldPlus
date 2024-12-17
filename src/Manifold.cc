@@ -15,7 +15,7 @@ Manifold::~Manifold()
 	tree_ = 0;
 }
 
-std::tuple<MatrixD, MatrixI> Manifold::ProcessManifold(const MatrixD& V, const MatrixI& F, int depth)
+std::tuple<MatrixD, MatrixI> Manifold::ProcessManifold(const MatrixD& verts, const MatrixI& faces, int depth)
 {
 	V_ = V;
 	F_ = F;

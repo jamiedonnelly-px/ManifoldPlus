@@ -10,5 +10,5 @@ PYBIND11_MODULE(manifold, m)
 {
     py::class_<Manifold>(m, "Manifold")
         .def(py::init<>())
-        .def("ProcessManifold", &Manifold::ProcessManifold, "A function to take an array of verts and faces and produce a manifold mesh", py::arg("verts"), py::arg("faces"), py::arg("depth"));
+        .def("ProcessManifold", &Manifold::ProcessManifold, "A function to take an array of verts and faces and produce a manifold mesh");
 }
